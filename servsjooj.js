@@ -29,7 +29,7 @@ var esquemaProd = new mongoose.Schema({
 
 var Modprod = mongoose.model('produtos', esquemaProd);
 
-mongoose.connect("mongodb://localhost/jooja", {useNewUrlParser: true});
+mongoose.connect("mongodb://189.54.108.42/jooja", {useNewUrlParser: true});
 
 app.use(express.static('./public'));
 app.use(express.static('./public/style'));
