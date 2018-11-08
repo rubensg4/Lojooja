@@ -74,13 +74,19 @@ app.post(['/busca'], function(requisicao, resp) {
                     resp.render('index');
                 }
                 else{
-                    resp.render('objetos');//pag de objetos?
+                    resp.render('objetos', {resposta: produto});//pag de objetos?
 
                 }
             })
 
         } else {
-            resp.render('usuario', { usuarios: busca.esq_name});
+            Modprod.find({ 'esq_name': termo_proc }, function(err, produtos) {
+                if (produtos == null) {
+                    resp.render('index')
+                } else {
+                    resp.render('objetos', {resposta: produtos});
+                }
+            });
 
         }
 
