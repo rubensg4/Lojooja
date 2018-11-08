@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div class="topo">
+    <ul>
+        <li><a href="/cadastro">Cadastro </a></li>
+        <li><a href="/login">Faça Login</a></li>
+        <li><a href="/index">Página Inicial</a></li>
+        <li><a href="/usuario">Procurar Usuários</a></li>
+        <li><a href="termos.html">Termos de Serviço</a></li>
+    </ul>
+    <form action="/busca" method="post">
+        Buscar Produto: <input type="text" name="produto"><br>
+        <input type="submit" name="envia">
+    </form>
+</div>
+
+<%
+for(i=0; i<usuarios.length; i++)
+{
+
+%>
+<h1>Bem vindo: </h1><p id="nome"><%= usuarios[i].esq_nome %></p>
+
+<%
+}
+%>
+
+<form action="/cadastroprod" method="post">
+    Nome Produto: <input type="text" name="nome"><br>
+    Imagem Produto: <input type="text" name="img"><br>
+    Marca: <input type="text" name="marca"><br>
+    Preço: <input type="text" name="preco"><br>
+    <input type="hidden" name="nome_user" value="<%= usuarios[i].esq_nome %>">
+    <input type="submit" name="envia" >
+</form>
+
+</body>
+</html>
