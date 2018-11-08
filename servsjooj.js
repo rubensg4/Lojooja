@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var app = express();
+var path = require('path');
 
 
 app.set('view engine', 'ejs');
@@ -31,9 +32,7 @@ var Modprod = mongoose.model('produtos', esquemaProd);
 
 mongoose.connect("mongodb://189.54.108.42/jooja", {useNewUrlParser: true});
 
-app.use(express.static('./public'));
-app.use(express.static('./public/style'));
-app.use(express.static('./public/images'));
+app.use(express.static('public'));
 
 //metodos get
 app.get(['/','/index'], function(requisicao, resp){
@@ -58,12 +57,10 @@ app.get(['/login'], function(requisicao, resp){
 app.get(['/usuario'], function(requisicao, resp){
     resp.render('usuario');
 });
-/*
-app.get(['/termos'], function(requisicao, resp){
-    resp.render('./public/termos');
-});
-*/
 
+app.get(['/termos'], function(requisicao, resp){
+    resp.sendFile(path.join(__dirname + '/public/termos.html'));
+});
 
 //metodos post
 //metodo post para busca
