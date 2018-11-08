@@ -81,13 +81,30 @@ app.post(['/cadastro'], function(requisicao, resp){
         esq_senha: senha
     });
 
-    novoclien.save(function(err){
-        if(err){
-            resp.render('erro');
-        }else{
-            resp.render('index');
-        }
+
+    Modclien.findOne({'esq_login': login}, function(err, usuario){
+      if (usuario == null){
+
+        novoclien.save(function(err){
+            if(err){
+                resp.render('erro');
+            }else{
+              Modprod.find({}, function(err, produtos){
+                  if (produtos == null){
+                      resp.render('erro');
+                  }
+                  else{
+                      resp.render('index',{prods: produtos});
+                  }
+              });
+            }
+        });
+      }else{
+        resp.render('cadastro');
+      }
     });
+
+
 });
 
 //post para login
