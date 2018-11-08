@@ -104,6 +104,7 @@ app.post(['/cadastroprod'], function(requisicao, resp){
     var img = requisicao.body.img;
     var marca = requisicao.body.marca;
     var preco = requisicao.body.preco;
+    var nome_user = requisicao.body.nome_user;
 
 
     var novoprod = new Modprod({
