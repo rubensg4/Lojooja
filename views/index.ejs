@@ -17,7 +17,35 @@
         Buscar Produto: <input type="text" name="busca_usuario"><br>
         <input type="submit" name="envia">
     </form>
+
 </div>
+
+<h1>Produtos</h1>
+
+<table border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td><b>Nome</b></td>
+        <td><b>Imagem</b></td>
+        <td><b>Marca</b></td>
+        <td><b>Preço</b></td>
+    </tr>
+
+    <%
+    var i=0;
+    for(i=0; i<prods.length; i++)
+    {
+
+    %>
+    <tr>
+        <td><%= prods[i].esq_obj %></td>
+        <td><img width="100" height="100" src=<%= prods[i].esq_url %>></td>
+        <td><%= prods[i].esq_marca %></td>
+        <td><%= prods[i].esq_preco %></td>
+    </tr>
+    <%
+    }
+    %>
+
 
 </body>
 </html>

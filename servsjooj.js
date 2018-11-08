@@ -37,7 +37,14 @@ app.use(express.static('./public/images'));
 
 //metodos get
 app.get(['/','/index'], function(requisicao, resp){
-    resp.render('index');
+  Modprod.find({}, function(err, produtos){
+      if (produtos == null){
+          resp.render('erro');
+      }
+      else{
+          resp.render('index',{prods: produtos});
+      }
+  });
 });
 
 app.get(['/cadastro'], function(requisicao, resp){
@@ -99,7 +106,14 @@ app.post(['/login'], function(requisicao, resp){
             resp.render('erro')
         }
         else{
-            resp.render('usuario', {usuarios: usuario});
+          Modprod.find({'esq_name' : usuario[0].esq_nome}, function(err, produtos){
+              if (produtos == null){
+                  resp.render('erro')
+              }
+              else{
+                  resp.render('usuario', {usuarios: usuario, lista: produtos});
+              }
+          });
         }
     });
 
@@ -131,7 +145,15 @@ app.post(['/cadastroprod'], function(requisicao, resp){
               if(err){
                   resp.render('erro');
               }else{
-                  resp.render('usuario', {usuarios: usuario});
+                Modprod.find({'esq_name' : usuario[0].esq_nome}, function(err, produtos){
+                    if (produtos == null){
+                        resp.render('erro')
+                    }
+                    else{
+                      console.log(produtos);
+                        resp.render('usuario', {usuarios: usuario, lista: produtos});
+                    }
+                });
               }
           });
         }
