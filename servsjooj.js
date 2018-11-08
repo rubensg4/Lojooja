@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var app = express();
+var path = require('path');
 
 
 app.set('view engine', 'ejs');
@@ -31,9 +32,7 @@ var Modprod = mongoose.model('produtos', esquemaProd);
 
 mongoose.connect("mongodb://189.54.108.42:27017/jooja", { useNewUrlParser: true });
 
-app.use(express.static('./public'));
-app.use(express.static('./public/style'));
-app.use(express.static('./public/images'));
+app.use(express.static('public'));
 
 //metodos get
 app.get(['/', '/index'], function(requisicao, resp) {
@@ -57,12 +56,10 @@ app.get(['/login'], function(requisicao, resp) {
 app.get(['/usuario'], function(requisicao, resp) {
     resp.render('usuario');
 });
-/*
-app.get(['/termos'], function(requisicao, resp){
-    resp.render('./public/termos');
-});
-*/
 
+app.get(['/termos'], function(requisicao, resp){
+    resp.sendFile(path.join(__dirname + '/public/termos.html'));
+});
 
 //metodos post
 //metodo post para busca
@@ -103,13 +100,30 @@ app.post(['/cadastro'], function(requisicao, resp) {
         esq_senha: senha
     });
 
-    novoclien.save(function(err) {
-        if (err) {
-            resp.render('erro');
-        } else {
-            resp.render('index');
-        }
+
+    Modclien.findOne({'esq_login': login}, function(err, usuario){
+      if (usuario == null){
+
+        novoclien.save(function(err){
+            if(err){
+                resp.render('erro');
+            }else{
+              Modprod.find({}, function(err, produtos){
+                  if (produtos == null){
+                      resp.render('erro');
+                  }
+                  else{
+                      resp.render('index',{prods: produtos});
+                  }
+              });
+            }
+        });
+      }else{
+        resp.render('cadastro');
+      }
     });
+
+
 });
 
 //post para login

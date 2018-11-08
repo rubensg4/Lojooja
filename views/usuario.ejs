@@ -10,8 +10,7 @@
         <li><a href="/cadastro">Cadastro </a></li>
         <li><a href="/login">Faça Login</a></li>
         <li><a href="/index">Página Inicial</a></li>
-        <li><a href="/usuario">Procurar Usuários</a></li>
-        <li><a href="termos.html">Termos de Serviço</a></li>
+        <li><a href="/termos">Termos de Serviço</a></li>
     </ul>
     <form action="/busca" method="post">
         Buscar: <input type="text" name="busca_usuario"><br>
@@ -26,7 +25,7 @@
     Imagem Produto: <input type="text" name="img"><br>
     Marca: <input type="text" name="marca"><br>
     Preço: <input type="text" name="preco"><br>
-    <input type="hidden" name="nome_user" value="<%= usuarios[0].esq_nome %>">
+    <input type="hidden" name="nome_user" value="<%= usuarios[0].esq_login %>">
     <input type="submit" name="envia" >
 </form>
 
