@@ -14,19 +14,19 @@
         <li><a href="termos.html">Termos de Serviço</a></li>
     </ul>
     <form action="/busca" method="post">
-        Buscar Produto: <input type="text" name="produto"><br>
+        Buscar: <input type="text" name="busca_usuario"><br>
         <input type="submit" name="envia">
     </form>
 </div>
 
-<h1>Bem vindo: </h1><p id="nome"><%= usuarios[0].esq_nome %></p>
+<h1>Bem vindo: </h1><p id="nome"><%= lista_temp[0].esq_nome %></p>
 
 <form action="/cadastroprod" method="post">
     Nome Produto: <input type="text" name="nome"><br>
     Imagem Produto: <input type="text" name="img"><br>
     Marca: <input type="text" name="marca"><br>
     Preço: <input type="text" name="preco"><br>
-    <input type="hidden" name="nome_user" value=<%= "usuarios[0].esq_nome" %>>
+    <input type="hidden" name="nome_user" value="<%= lista_temp[0].esq_nome %>">
     <input type="submit" name="envia" >
 </form>
 
