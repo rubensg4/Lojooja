@@ -19,16 +19,7 @@
     </form>
 </div>
 
-<%
-for(i=0; i<usuarios.length; i++)
-{
-
-%>
-<h1>Bem vindo: </h1><p id="nome"><%= usuarios[i].esq_nome %></p>
-
-<%
-}
-%>
+<h1>Bem vindo: </h1><p id="nome"><%= usuarios[0].esq_nome %></p>
 
 <form action="/cadastroprod" method="post">
     Nome Produto: <input type="text" name="nome"><br>
