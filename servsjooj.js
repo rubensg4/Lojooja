@@ -63,6 +63,9 @@ app.get(['/termos'], function(requisicao, resp){
 
 app.post(['/busca'], function(requisicao, resp){
     var termo_proc  = requisicao.body.busca_usuario;
+    Modprod.find({esq_obj: termo_proc} function (err, obj){
+    });
+
 
 });
 
