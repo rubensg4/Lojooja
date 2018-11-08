@@ -59,6 +59,12 @@ app.get(['/termos'], function(requisicao, resp){
 
 
 //metodos post
+//metodo post para busca
+
+app.post(['/busca'], function(requisicao, resp){
+    var termo_proc  = requisicao.body.busca_usuario;
+
+});
 
 app.post(['/cadastro'], function(requisicao, resp){
     var nome  = requisicao.body.nome;
@@ -80,7 +86,7 @@ app.post(['/cadastro'], function(requisicao, resp){
     });
 });
 
-
+var lista_temp = [];
 //post para login
 app.post(['/login'], function(requisicao, resp){
     var login = requisicao.body.login;
@@ -91,7 +97,9 @@ app.post(['/login'], function(requisicao, resp){
             resp.render('erro')
         }
         else{
-            resp.render('usuario', {usuarios: usuario});
+            lista_temp = Object.assign(usuario);
+            console.log(lista_temp)
+            resp.render('usuario', {lista_temp});
         }
     });
 
@@ -105,10 +113,11 @@ app.post(['/cadastroprod'], function(requisicao, resp){
     var marca = requisicao.body.marca;
     var preco = requisicao.body.preco;
     var nome_user = requisicao.body.nome_user;
-
+    console.log(nome_user)
 
     var novoprod = new Modprod({
         esq_obj: nome,
+        esq_name: nome_user,
         esq_url: img,
         esq_marca: marca,
         esq_preco: preco
@@ -118,7 +127,7 @@ app.post(['/cadastroprod'], function(requisicao, resp){
         if(err){
             resp.render('erro');
         }else{
-            resp.render('usuario');
+            resp.render('usuario', {lista_temp});
         }
     });
 });
