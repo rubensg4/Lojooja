@@ -68,3 +68,36 @@ div.container a
     margin-right: 16px;
     font-size: 17px;
 }
+.navbar input[type=submit]{
+    visibility: hidden;
+
+}
+
+.input{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.input form{
+
+  display: inline-block;
+
+}
+
+.divtable{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+
+}
+.table{
+    border: none;
+    background-color: #353535;
+    text-align: center;
+
+
+}
+.table th, td {
+    padding: 15px;
+}

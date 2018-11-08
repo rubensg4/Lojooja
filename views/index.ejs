@@ -8,21 +8,21 @@
 
 <div class="navbar">
     <ul>
+        <a href="/index">Página Inicial</a>
         <a href="/cadastro">Cadastro </a>
         <a href="/login">Faça Login</a>
-        <a href="/index">Página Inicial</a>
         <a href="/termos">Termos de Serviço</a>
     </ul>
     <form action="/busca" method="post">
-        Buscar Produto: <input type="text" name="busca_usuario"><br>
-        <input type="submit" name="envia" style="visibility: hidden;">
+        Buscar: <input type="text" name="busca_usuario"><br>
+        <input type="submit" name="envia" >
     </form>
 
 </div>
 
 <h1>Produtos</h1>
-
-<table border="1" cellpadding="0" cellspacing="0">
+<div class="divtable">
+<table class="table" border="1" cellpadding="0" cellspacing="0">
     <tr>
         <td><b>Nome</b></td>
         <td><b>Imagem</b></td>
@@ -46,6 +46,6 @@
     }
     %>
 
-
+</div>
 </body>
 </html>
